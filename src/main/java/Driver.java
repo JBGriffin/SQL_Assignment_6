@@ -1,37 +1,65 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Scanner;
+import java.sql.Statement;
+
 
 public class Driver {
+    // JDBC driver name and database URL
+    private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    private static final String DB_URL = "jdbc:mysql://localhost/";
 
-    private static DatabaseConnector databaseConnector;
+    //  Database credentials
+    private static final String USER = "root";
+    private static final String PASS = "admin";
 
+    public static void main(String[] args) {
+        Connection conn = null;
+        Statement stmt = null;
+        TableCreation tableCreation;
+        try{
+            conn = connectToDatabase();
 
+            tableCreation = new TableCreation(conn);
 
-    public static void main(String[] args){
-        File file = new File("src//main//resources//tableCreation.txt");
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found");
+        }catch(SQLException se){
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }catch(Exception e){
+            //Handle errors for Class.forName
             e.printStackTrace();
+        }finally{
+            //finally block used to close resources
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se2){
+            }// nothing we can do
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }//end finally try
         }
+    }//end main
 
-        try {
-            databaseConnector = new DatabaseConnector();
-        } catch (SQLException e) {
-            System.err.println("Could not connect to data base.");
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            System.err.println("Unable to read from properties file");
-            e.printStackTrace();
-        }
+    /**
+     * Creates a connection to the database
+     * @return Active connection to the database
+     * @throws ClassNotFoundException If driver can not be created
+     * @throws SQLException Malformed Database connection
+     */
+    private static Connection connectToDatabase() throws ClassNotFoundException, SQLException {
+        // Register JDBC driver
+        Class.forName(JDBC_DRIVER);
 
-        while(scanner.hasNextLine()) {
-            System.out.println(scanner.nextLine());
-        }
-        databaseConnector.closeConnection();
+        // Open a connection
+        System.out.println("Connecting to database...");
+        return DriverManager.getConnection(DB_URL, USER, PASS);
     }
+
+
 }
+
+
