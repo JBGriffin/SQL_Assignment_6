@@ -1,25 +1,28 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
 
 public class Driver {
     // JDBC driver name and database URL
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost/";
+    private static final String DB_RESOURCE_FILE = "src//main//resources//db.properties";
 
-    //  Database credentials
-    private static final String USER = "root";
-    private static final String PASS = "admin";
+    private static Logger log = new Logger();
 
     public static void main(String[] args) {
+        log.setLogOn(true);
         Connection conn = null;
         Statement stmt = null;
         TableCreation tableCreation;
         try{
             conn = connectToDatabase();
-
             tableCreation = new TableCreation(conn);
 
         }catch(SQLException se){
@@ -51,12 +54,31 @@ public class Driver {
      * @throws SQLException Malformed Database connection
      */
     private static Connection connectToDatabase() throws ClassNotFoundException, SQLException {
+        //  Database credentials
+        String databaseURL;
+        String username;
+        String password;
+        InputStream input;
+        Properties prop = new Properties();
+        try {
+            input = new FileInputStream(DB_RESOURCE_FILE);
+            prop.load(input);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        databaseURL = prop.getProperty("url");
+        username = prop.getProperty("username");
+        password = prop.getProperty("password");
+
         // Register JDBC driver
         Class.forName(JDBC_DRIVER);
 
         // Open a connection
-        System.out.println("Connecting to database...");
-        return DriverManager.getConnection(DB_URL, USER, PASS);
+        log.info("Connecting to database...");
+        return DriverManager.getConnection(databaseURL, username, password);
     }
 
 

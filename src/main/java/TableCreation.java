@@ -13,13 +13,14 @@ public class TableCreation {
 
     private static String TABLE_CREATION_FILE = "src//main//resources//tableCreation.txt";
 
+    private Logger log = new Logger();
+
     private String inputStatement = null;
     Statement statement = null;
 
     public TableCreation(Connection connection) throws SQLException {
-
-        //STEP 4: Execute a query
-        System.out.println("Creating database...");
+        log.setLogOn(true);
+        log.info("Creating database...");
         statement = connection.createStatement();
         File file = new File(TABLE_CREATION_FILE);
         Scanner scanner = null;
@@ -35,7 +36,7 @@ public class TableCreation {
             processInputFile(scanner.nextLine());
         }
 
-        System.out.println("Database created successfully...");
+        log.info("Database created successfully...");
     }
 
     /**
@@ -44,6 +45,7 @@ public class TableCreation {
      * @throws SQLException Malformed SQL statement throws error
      */
     private void processInputFile(String line) throws SQLException {
+        log.debug(line);
         statement.executeUpdate(line);
     }
 }
