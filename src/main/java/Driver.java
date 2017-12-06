@@ -13,6 +13,8 @@ public class Driver {
     // JDBC driver name and database URL
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static final String DB_RESOURCE_FILE = "src//main//resources//db.properties";
+    private static final String TABLE_CREATION_FILE = "src//main//resources//tableCreation.txt";
+    private static final String DB_QUARIES_FILE = "src//main//resources//databaseQuaries.txt";
 
     private static Logger log = new Logger();
 
@@ -21,9 +23,12 @@ public class Driver {
         Connection conn = null;
         Statement stmt = null;
         TableCreation tableCreation;
+        SQL_Quaries quaries;
+
         try{
             conn = connectToDatabase();
-            tableCreation = new TableCreation(conn);
+            tableCreation = new TableCreation(conn, TABLE_CREATION_FILE);
+            quaries = new SQL_Quaries(conn, DB_QUARIES_FILE);
 
         }catch(SQLException se){
             //Handle errors for JDBC

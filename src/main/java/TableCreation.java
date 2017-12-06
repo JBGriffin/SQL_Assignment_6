@@ -11,18 +11,16 @@ import java.util.Scanner;
  */
 public class TableCreation {
 
-    private static String TABLE_CREATION_FILE = "src//main//resources//tableCreation.txt";
-
     private Logger log = new Logger();
 
     private String inputStatement = null;
     Statement statement = null;
 
-    public TableCreation(Connection connection) throws SQLException {
+    public TableCreation(Connection connection, String tableCreationFile) throws SQLException {
         log.setLogOn(true);
         log.info("Creating database...");
         statement = connection.createStatement();
-        File file = new File(TABLE_CREATION_FILE);
+        File file = new File(tableCreationFile);
         Scanner scanner = null;
 
         try {
