@@ -39,13 +39,17 @@ public class SQL_Queries {
             e.printStackTrace();
         }
 
-
         while(scanner.hasNextLine()){
             readLine = scanner.nextLine();
             processInputSwitches(readLine);
         }
     }
 
+    /**
+     * Processes query input from user. Statements will be excuted in
+     * the execution method calls
+     * @param line
+     */
     private void processInputSwitches(String line){
         String [] stmtLine = line.split(",");
         String query = stmtLine[0];
@@ -58,7 +62,7 @@ public class SQL_Queries {
                 executeInsert(stmtLine);
                 break;
             case UPDATE_STMT:
-
+                executeUpdate(stmtLine);
                 break;
             default:
 
@@ -70,7 +74,7 @@ public class SQL_Queries {
      * from the rest of the elements of the array. Executes the SQL statement after values
      * have been set
      * @param insertValues Assumes the first index is the query type, second is the table, and
-     *                     the rest of the values to be key/value pairs separated by '=' signs
+     *                     the optional third argument is the primary key of the table
      */
     private void executeInsert(String [] insertValues){
         String table = insertValues[TABLE_INDEX];
@@ -95,19 +99,28 @@ public class SQL_Queries {
         }
 
         query.append(keys.append(values));
-        try {
-            statement.execute(query.toString());
-        } catch (SQLException e) {
-            log.debug("Statement executed: " + query.toString());
-            /**
-             * TODO: Error Trap
-             */
-            e.printStackTrace();
-        }
-        log.debug(query.toString());
+
+        sendToDatabase(query.toString());
     }
 
-    private void update(String updateLine){
+    /**
+     * Updates the given table. Assumes that the primary key is the final argument given
+     * is the primary key
+     * @param updateValues
+     */
+    private void executeUpdate(String [] updateValues){
+        StringBuilder query = new StringBuilder("UPDATE " + updateValues[TABLE_INDEX] + " SET ");
+        for(int i = VAR_START; i < updateValues.length; i++){
+            if(updateValues.length - 1 == i){
+                query.append(updateValues[i] + ";");
+            } else if(updateValues.length - 2 == i) {
+                query.append(updateValues[i] + " WHERE ");
+            } else {
+                query.append(updateValues[i] + ", ");
+            }
+        }
+
+        sendToDatabase(query.toString());
 
     }
 
@@ -126,14 +139,16 @@ public class SQL_Queries {
             query.append(" WHERE " + deleteValues[VAR_START] + ";");
         }
 
+        sendToDatabase(query.toString());
+    }
+
+    private void sendToDatabase(String query){
+
         try {
             log.debug("Query == " + query);
-            statement.execute(query.toString());
+            statement.execute(query);
         } catch (SQLException e) {
-            /**
-             * TODO: Error trap
-             */
-            e.printStackTrace();
+            log.info("OH GOD SOMETHING WENT REALLY WRONG");
         }
     }
 }

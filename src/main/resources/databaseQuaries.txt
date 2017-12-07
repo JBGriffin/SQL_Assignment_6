@@ -3,4 +3,9 @@ delete,auto
 insert, auto, vehnr=113,year=2013,make=toyota,model=tundra
 insert, auto, vehnr=112,year=2010,make=toyota,model=prius
 insert, auto, vehnr=110,year=2015,make=toyota,model=carolla
+
+update, auto, vehnr=102,year=2000
+
+update, auto, year=2000,vehnr=112
+
 delete, auto, vehnr=110
