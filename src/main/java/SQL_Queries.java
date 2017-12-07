@@ -17,6 +17,9 @@ public class SQL_Queries {
     // Constants
     private static final int KEY_INDEX = 0;
     private static final int VALUE_INDEX = 1;
+    private static final int TABLE_INDEX = 1;
+    private static final int VAR_START = 2;
+    private static final int MAX_DELETE_ARG = 3;
 
     private Logger log = new Logger();
     private Statement statement = null;
@@ -46,11 +49,10 @@ public class SQL_Queries {
     private void processInputSwitches(String line){
         String [] stmtLine = line.split(",");
         String query = stmtLine[0];
-        String table = stmtLine[1];
 
         switch(query.toUpperCase()){
             case DELETE_STMT:
-
+                executeDelete(stmtLine);
                 break;
             case INSERT_STMT:
                 executeInsert(stmtLine);
@@ -71,7 +73,7 @@ public class SQL_Queries {
      *                     the rest of the values to be key/value pairs separated by '=' signs
      */
     private void executeInsert(String [] insertValues){
-        String table = insertValues[1];
+        String table = insertValues[TABLE_INDEX];
         String [] keyValueArr;
         StringBuilder values = new StringBuilder();
         StringBuilder keys = new StringBuilder();
@@ -80,7 +82,7 @@ public class SQL_Queries {
 
         values.append("VALUES (");
 
-        for(int i = 2; i < insertValues.length; i++){
+        for(int i = VAR_START; i < insertValues.length; i++){
             keyValueArr = insertValues[i].split("=");
 
             if(insertValues.length - 1 == i){
@@ -109,9 +111,29 @@ public class SQL_Queries {
 
     }
 
-    private void delete(String deleteLine){
+    /**
+     * Deletes the thing
+     * @param deleteValues
+     */
+    private void executeDelete(String [] deleteValues){
+        String table = deleteValues[TABLE_INDEX];
+        String [] keyValPair = new String[2];
+        StringBuilder query = new StringBuilder("DELETE FROM `" + table.trim() + "`");
 
+        if(deleteValues.length < MAX_DELETE_ARG){
+            query.append(";");
+        } else {
+            query.append(" WHERE " + deleteValues[VAR_START] + ";");
+        }
+
+        try {
+            log.debug("Query == " + query);
+            statement.execute(query.toString());
+        } catch (SQLException e) {
+            /**
+             * TODO: Error trap
+             */
+            e.printStackTrace();
+        }
     }
-
-
 }

@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="554c4ed3-3a16-4eea-9b0e-e518b761eb46" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Driver.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/SQL_Quaries.java" afterPath="$PROJECT_DIR$/src/main/java/SQL_Queries.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assignment6_4913.iml" afterPath="$PROJECT_DIR$/Assignment6_4913.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Driver.java" afterPath="$PROJECT_DIR$/src/main/java/Driver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/SQL_Queries.java" afterPath="$PROJECT_DIR$/src/main/java/SQL_Queries.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/databaseQuaries.txt" afterPath="$PROJECT_DIR$/src/main/resources/databaseQuaries.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -40,21 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="tableCreation.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/tableCreation.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="4" column="185" lean-forward="false" selection-start-line="4" selection-start-column="185" selection-end-line="4" selection-end-column="185" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="databaseQuaries.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/databaseQuaries.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+              <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -75,8 +61,8 @@
       <file leaf-file-name="SQL_Queries.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/SQL_Queries.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4600">
-              <caret line="100" column="31" lean-forward="false" selection-start-line="100" selection-start-column="31" selection-end-line="100" selection-end-column="31" />
+            <state relative-caret-position="766">
+              <caret line="63" column="16" lean-forward="false" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -761,7 +747,7 @@
       <workItem from="1512524657873" duration="7015000" />
       <workItem from="1512597662160" duration="164000" />
       <workItem from="1512597850326" duration="300000" />
-      <workItem from="1512600270002" duration="5344000" />
+      <workItem from="1512600270002" duration="6914000" />
     </task>
     <task id="LOCAL-00001" summary="Table creation finished&#10;&#10;Creates and uses local database for policy crap.">
       <created>1512527971417</created>
@@ -777,11 +763,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512530094282</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Can insert into tables. Teehee.">
+      <created>1512605694747</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1512605694747</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23854000" />
+    <option name="totallyTimeSpent" value="25424000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -871,7 +864,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Table creation finished&#10;&#10;Creates and uses local database for policy crap." />
     <MESSAGE value="Added logger, using db.prop again" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added logger, using db.prop again" />
+    <MESSAGE value="Can insert into tables. Teehee." />
+    <option name="LAST_COMMIT_MESSAGE" value="Can insert into tables. Teehee." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1028,14 +1022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/tableCreation.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="4" column="185" lean-forward="false" selection-start-line="4" selection-start-column="185" selection-end-line="4" selection-end-column="185" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/TableCreation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-783">
@@ -1046,10 +1032,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/databaseQuaries.txt">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/tableCreation.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+        <state relative-caret-position="184">
+          <caret line="4" column="185" lean-forward="false" selection-start-line="4" selection-start-column="185" selection-end-line="4" selection-end-column="185" />
           <folding />
         </state>
       </provider>
@@ -1064,10 +1050,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/databaseQuaries.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/SQL_Queries.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4600">
-          <caret line="100" column="31" lean-forward="false" selection-start-line="100" selection-start-column="31" selection-end-line="100" selection-end-column="31" />
+        <state relative-caret-position="766">
+          <caret line="63" column="16" lean-forward="false" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
