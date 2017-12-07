@@ -1,0 +1,1 @@
+insert, auto, vehnr=112,year=2013,make=toyota,model=tundra

@@ -23,12 +23,12 @@ public class Driver {
         Connection conn = null;
         Statement stmt = null;
         TableCreation tableCreation;
-        SQL_Quaries quaries;
+        SQL_Queries quaries;
 
         try{
             conn = connectToDatabase();
             tableCreation = new TableCreation(conn, TABLE_CREATION_FILE);
-            quaries = new SQL_Quaries(conn, DB_QUARIES_FILE);
+            quaries = new SQL_Queries(conn, DB_QUARIES_FILE);
 
         }catch(SQLException se){
             //Handle errors for JDBC
